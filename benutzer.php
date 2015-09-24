@@ -13,7 +13,13 @@ if($passwort != $passwort2 OR $ID == "" OR $passwort == "")
 	echo "Eingabefehler. Bitte alle Felder korekt ausfüllen. <a href=\"eintragen.html\">Zurück</a>";
 	exit;
 }
-$passwort = md5($passwort);
+
+$passwort = $_POST['passwort'];
+$salt_str = 'ilyas113';
+ 
+$gesaltetes_passwort = md5($salt_str . $passwort);
+
+
 
 $result = mysql_query("SELECT ID FROM benutzerlogin WHERE ID LIKE '$ID'");
 $menge = mysql_num_rows($result);
