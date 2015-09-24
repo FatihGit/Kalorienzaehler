@@ -15,7 +15,7 @@ if($passwort != $passwort2 OR $ID == "" OR $passwort == "")
 }
 
 $passwort = $_POST['passwort'];
-$salt_str = 'ilyas113';
+$salt_str = 'musta126';
  
 $gesaltetes_passwort = md5($salt_str . $passwort);
 
