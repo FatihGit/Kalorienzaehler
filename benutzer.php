@@ -29,7 +29,7 @@ if($menge == 0)
 	}
 	else
 	{
-		echo "Fehler beim Speichern des Benutzernames. <a href=\"eintragen.html\">Zurück</a>";
+		echo "Fehler beim Speichern des Benutzernames. <a href=\"benutzer.html\">Zurück</a>";
 	}
 
 
@@ -37,6 +37,6 @@ if($menge == 0)
 
 else
 {
-	echo "Benutzername schon vorhanden. <a href=\"eintragen.html\">Zurück</a>";
+	echo "Benutzername schon vorhanden. <a href=\"benutzer.html\">Zurück</a>";
 }
 ?>
