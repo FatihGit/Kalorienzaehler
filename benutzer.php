@@ -10,7 +10,7 @@ $passwort2 = $_POST["passwort2"];
 
 if($passwort != $passwort2 OR $ID == "" OR $passwort == "")
 {
-	echo "Eingabefehler. Bitte alle Felder korekt ausfüllen. <a href=\"eintragen.html\">Zurück</a>";
+	echo "Eingabefehler. Bitte alle Felder korekt ausfüllen. <a href=\"benutzer.html\">Zurück</a>";
 	exit;
 }
 

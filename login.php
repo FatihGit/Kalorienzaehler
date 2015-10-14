@@ -8,7 +8,7 @@ or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
 mysql_select_db("kalorienzaehlerdb") or die ("Datenbank konnte nicht ausgewählt werden"); 
 
 $ID = $_POST["ID"]; 
-$passwort = md5($_POST["password"]); 
+$passwort = $_POST["passwort"]; 
 
 $abfrage = "SELECT ID, passwort FROM benutzerlogin WHERE ID LIKE '$ID' LIMIT 1"; 
 $ergebnis = mysql_query($abfrage); 
