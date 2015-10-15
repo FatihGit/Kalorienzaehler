@@ -17,7 +17,7 @@ $row = mysql_fetch_object($ergebnis);
 if($row->passwort == $passwort) 
     { 
     $_SESSION["ID"] = $ID; 
-    echo "Login erfolgreich. <br> <a href=\"geheim.php\">Geschützer Bereich</a>"; 
+    echo "Login erfolgreich. <br> <a href=\"benutzer2.html\">Geschützer Bereich</a>"; 
     } 
 else 
     { 

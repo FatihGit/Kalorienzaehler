@@ -7,6 +7,8 @@ mysql_select_db("kalorienzaehlerdb") or die ("Datenbank konnte nicht ausgewählt
 $ID = $_POST["ID"];
 $passwort = $_POST["passwort"];
 $passwort2 = $_POST["passwort2"];
+$vorname = $_POST["vorname"];
+$nachname = $_POST["nachname"];
 
 if($passwort != $passwort2 OR $ID == "" OR $passwort == "")
 {
@@ -26,7 +28,7 @@ $menge = mysql_num_rows($result);
 
 if($menge == 0)
 {
-	$eintrag = "INSERT INTO benutzerlogin (ID, passwort) VALUES ('$ID', '$passwort')";
+	$eintrag = "INSERT INTO benutzerlogin (ID, passwort, vorname, nachname) VALUES ('$ID', '$passwort', '$vorname', '$nachname')";
 	$eintragen = mysql_query($eintrag);
 
 	if($eintragen == true)
