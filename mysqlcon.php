@@ -31,10 +31,10 @@ private static $db;
             self::$db = new mysqlcon();
             
             // database
-    db::$config['host'] = 'mysql.hostinger.de';
-    db::$config['user'] = 'u659698584_ilyas';
-    db::$config['pass'] = 'ilyas1234';
-    db::$config['db'] = 'u659698584_kalo';
+    self:db::$config['host'] = 'mysql.hostinger.de';
+    self:db::$config['user'] = 'u659698584_ilyas';
+    self:db::$config['pass'] = 'ilyas1234';
+    self:db::$config['db'] = 'u659698584_kalo';
     // connect
     $this->connection = new mysqli(db::$config['host'], db::$config['user'], db::$config['pass'], db::$config['db']);
 
