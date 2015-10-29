@@ -41,8 +41,8 @@ $row = mysql_fetch_object($ergebnis);
 
 if (isset($_POST['Submit'])) {
 
-    if (!empty($ID) && !empty($passwort)) {
-        if ($row == true) {
+    if (!empty($ID) && !empty($passwort )) {
+        if ($row == true && $row->passwort == $passwort) {
             $_SESSION["ID"] = $ID;
             echo 'Login erfolgreich <br> <a href="anzeige.php">Daten anzeigen</a>';
         } else {
@@ -52,7 +52,7 @@ if (isset($_POST['Submit'])) {
         echo "Bitte Benutzername und Passwort eingeben";
     }
 }
-//&& $row->passwort == $passwort
+
 ?>
 
 

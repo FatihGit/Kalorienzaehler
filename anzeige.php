@@ -1,9 +1,10 @@
 <HTML>
    <HEAD>
       <TITLE>Anzeige</TITLE>
+      <link href="css/table.css" rel='stylesheet' type='text/css' />
    </HEAD>
    <BODY>
-       <div class="loader"></div>
+       
    </BODY>
 </HTML>
 <?php
