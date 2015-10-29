@@ -1,50 +1,83 @@
+<html>
+    <head>
+        <title>Registrieren</title>
+        <meta charset="utf-8">
+        <link href="css/style.css" rel='stylesheet' type='text/css' />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>	
+    <form action="benutzer.php" method="post">
+        <h2>Registrierung</h2>
+        Dein Username:<br>
+        <input type="text" size="24" maxlength="50"
+               name="ID"><br><br>
+        Dein Passwort:<br>
+        <input type="password" size="24" maxlength="50"
+               name="passwort"><br><br>
+        Passwort wiederholen:<br>
+        <input type="password" size="24" maxlength="50"
+               name="passwort2"><br><br>
+        Vorname:<br>
+        <input type="text" size="24" maxlength="50"
+               name="vorname"><br><br>
+        Nachname:<br>
+        <input type="text" size="24" maxlength="50"
+               name="nachname"><br><br>
+        <input type="submit" name="Submit" value="Anmelden">
+    </form>
+</html>
+
 <?php
-$verbindung = mysql_connect("localhost", "root" , "")
-or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+session_start();
+?>
 
-mysql_select_db("kalorienzaehlerdb") or die ("Datenbank konnte nicht ausgewählt werden");
+<?php
+$verbindung = mysql_connect("localhost", "root", "")
+        or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
 
-$ID = $_POST["ID"];
-$passwort = $_POST["passwort"];
-$passwort2 = $_POST["passwort2"];
-$vorname = $_POST["vorname"];
-$nachname = $_POST["nachname"];
+mysql_select_db("kalorienzaehlerdb") or die("Datenbank konnte nicht ausgewählt werden");
 
-if($passwort != $passwort2 OR $ID == "" OR $passwort == "")
-{
-	echo "Eingabefehler. Bitte alle Felder korekt ausfüllen. <a href=\"benutzer.html\">Zurück</a>";
-	exit;
-}
+$ID = filter_input(INPUT_POST, "ID");
+$_SESSION['ID'] = $ID;
 
-$passwort = $_POST['passwort'];
-$salt_str = 'musta126';
- 
-$gesaltetes_passwort = md5($salt_str . $passwort);
+$passwort = filter_input(INPUT_POST, "passwort");
+$passwort2 = filter_input(INPUT_POST, "passwort2");
+$vorname = filter_input(INPUT_POST, "vorname");
+$nachname = filter_input(INPUT_POST, "nachname");
 
+/*
+  if($passwort != $passwort2 OR $ID == "" OR $passwort == "")
+  {
+  echo "Eingabefehler. Bitte alle Felder korekt ausfüllen. <a href=\"benutzer.html\">Zurück</a>";
+  exit;
+  }
+ */
 
+/*
+  $passwort = $_POST['passwort'];
+  $salt_str = 'musta126';
+
+ */
+
+/*
+  $gesaltetes_passwort = md5($salt_str . $passwort);
+ * 
+ */
 
 $result = mysql_query("SELECT ID FROM benutzerlogin WHERE ID LIKE '$ID'");
 $menge = mysql_num_rows($result);
+if (isset($_POST['Submit'])) {
 
-if($menge == 0)
-{
-	$eintrag = "INSERT INTO benutzerlogin (ID, passwort, vorname, nachname) VALUES ('$ID', '$passwort', '$vorname', '$nachname')";
-	$eintragen = mysql_query($eintrag);
+    if ($menge == 0) {
+        $eintrag = "INSERT INTO benutzerlogin (ID, passwort, vorname, nachname) VALUES ('$ID', '$passwort', '$vorname', '$nachname')";
+        $eintragen = mysql_query($eintrag);
 
-	if($eintragen == true)
-	{
-		echo "Benutzername <b>$ID</b> wurde erstellt. <a href=\"login.html\">Login</a>";
-	}
-	else
-	{
-		echo "Fehler beim Speichern des Benutzernames. <a href=\"benutzer.html\">Zurück</a>";
-	}
-
-
-}
-
-else
-{
-	echo "Benutzername schon vorhanden. <a href=\"benutzer.html\">Zurück</a>";
+        if ($eintragen == true) {
+            echo "Benutzername <b>$ID</b> wurde erstellt. <a href=\"kalorienberechnung.php\">zur Kalorienberechnung</a>";
+        } else {
+            echo "Fehler beim Speichern des Benutzernames. <a href=\"benutzer.html\">Zurück</a>";
+        }
+    } else {
+        echo "Benutzername schon vorhanden. <a href=\"benutzer.html\">Zurück</a>";
+    }
 }
 ?>
