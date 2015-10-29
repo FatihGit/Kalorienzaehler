@@ -1,5 +1,5 @@
 body {
-    background-color: #666666;
+    background-color: #cccccc;
 	  background-repeat: no-repeat;
 	  background-attachment: fixed;
 	}
@@ -7,7 +7,7 @@ body {
         form{
             margin: 0 auto;
         width: 370px;
-        height: 300px;
+        height: 400px;
         background-color: #FFCC66;
         border-radius: 10px;
         box-shadow: 0 0 30px #FFCC66;
