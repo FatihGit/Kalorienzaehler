@@ -23,8 +23,6 @@ $result = mysqli_query($con,"SELECT * FROM kalorien WHERE k_id LIKE '$ID'");
 
 echo "<table border='1'>
 <tr>
-<th>ID</th>
-<th>kalorien</th>
 <th>Eiweiß</th>
 <th>Kohlenhydrate</th>
 <th>Fett</th>
@@ -32,9 +30,11 @@ echo "<table border='1'>
 
 while($row = mysqli_fetch_array($result))
 {
+    echo "Hallo " . $row['k_id'] . "<br>"  ."Ihre Kalorien betragen: " . $row['Kalorien'] ."<br><br>".
+          "Die Makronährstoffe sind:"."<br><br>";
+    
+    
 echo "<tr>";
-echo "<td>" . $row['k_id'] . "</td>";
-echo "<td>" . $row['Kalorien'] . "</td>";
 echo "<td>" . $row['Eiweiss'] . "</td>";
 echo "<td>" . $row['Kohlenhydrate'] ."</td>";
 echo "<td>" . $row['Fett'] ."</td>";
