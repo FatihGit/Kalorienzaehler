@@ -26,10 +26,23 @@ session_start();
 ?> 
 
 <?php
+
+
+
+$mysqli = new mysqli("localhost", "u659698584_ilyas", "ilyas1234", "u659698584_kalo");
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+echo $mysqli->host_info . "\n";
+
+
+
+/*
 $verbindung = mysql_connect("localhost", "u659698584_ilyas", "ilyas1234")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
 mysql_select_db("kalorienzaehlerdb") or die("Datenbank konnte nicht ausgewählt werden");
 
+*/
 
 $ID = filter_input(INPUT_POST, "ID");
 $passwort = filter_input(INPUT_POST, "passwort");
