@@ -28,7 +28,7 @@ private static $db;
     }
 
     public static function getConnection() {
-        $config = new db();
+        
         if (self::$db == null) {
             self::$db = new mysqlcon();
             

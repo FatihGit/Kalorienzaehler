@@ -12,7 +12,7 @@
      ?>
     
 <?php
-require_once 'mysqlcon.php';
+include "mysqlcon.php";
 
 $db = mysqlcon::getConnection();
 

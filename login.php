@@ -31,9 +31,10 @@ session_start();
 
 <?php
 
-
+include "mysqlcon.php";
+/*
 require_once 'mysqlcon.php';
-
+*/
 /*
 $mysqli = new mysqli("localhost", "u659698584_ilyas", "ilyas1234", "u659698584_kalo");
 if ($mysqli->connect_errno) {
