@@ -25,6 +25,7 @@
         <input type="submit" name="Submit" value="Anmelden">
     </form>
 </html>
+
 <?php
 session_start();
 ?>
