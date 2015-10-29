@@ -36,12 +36,13 @@ if ($mysqli->connect_errno) {
 echo $mysqli->host_info . "\n";
 */
 
+$db = Database::getConnection();
 
-
+/*
 $verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyas1234")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
 mysql_select_db("u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
-
+*/
 /*
 Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;
 */

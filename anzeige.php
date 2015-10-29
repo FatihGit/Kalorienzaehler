@@ -12,12 +12,17 @@
      ?>
     
 <?php
+
+$db = Database::getConnection();
+
+/*
 $con=mysqli_connect("localhost","root","","kalorienzaehlerdb");
 // Check connection
 if (mysqli_connect_errno())
 {
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
+*/
 
 $ID = $_SESSION['ID'];
 $result = mysqli_query($con,"SELECT * FROM kalorien WHERE k_id LIKE '$ID'"); 
