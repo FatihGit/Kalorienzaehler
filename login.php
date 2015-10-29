@@ -33,9 +33,10 @@ session_start();
 $servername = "sql13.hostinger.de";
 $username = "u659698584_ilyas";
 $password = "ilyas1234";
+$database = "u659698584_kalo";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, "$database");
 
 // Check connection
 if ($conn->connect_error) {
