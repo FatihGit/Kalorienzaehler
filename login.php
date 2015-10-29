@@ -40,7 +40,7 @@ echo $mysqli->host_info . "\n";
 
 $verbindung = mysql_connect("localhost", "u659698584_ilyas", "ilyas1234")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-mysql_select_db("kalorienzaehlerdb") or die("Datenbank konnte nicht ausgewählt werden");
+mysql_select_db("u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
 
 
 
