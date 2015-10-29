@@ -30,7 +30,7 @@ session_start();
 ?> 
 
 <?php
-$servername = "http://sql13.hostinger.de/";
+$servername = "sql13.hostinger.de";
 $username = "u659698584_ilyas";
 $password = "ilyas1234";
 
