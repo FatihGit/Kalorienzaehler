@@ -36,7 +36,7 @@ if ($mysqli->connect_errno) {
 echo $mysqli->host_info . "\n";
 */
 
-$db = Database::getConnection();
+$db = mysqlcon::getConnection();
 
 /*
 $verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyas1234")

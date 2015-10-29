@@ -13,7 +13,7 @@
     
 <?php
 
-$db = Database::getConnection();
+$db = mysqlcon::getConnection();
 
 /*
 $con=mysqli_connect("localhost","root","","kalorienzaehlerdb");
