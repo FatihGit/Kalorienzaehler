@@ -18,6 +18,7 @@ class mysqlcon {
 private static $db;
     private $connection;
 
+    
     private function __construct() {
         $this->connection = new MySQLi(/* credentials */);
     }
@@ -27,14 +28,15 @@ private static $db;
     }
 
     public static function getConnection() {
+        $config = new db();
         if (self::$db == null) {
             self::$db = new mysqlcon();
             
             // database
-    self:db::$config['host'] = 'mysql.hostinger.de';
-    self:db::$config['user'] = 'u659698584_ilyas';
-    self:db::$config['pass'] = 'ilyas1234';
-    self:db::$config['db'] = 'u659698584_kalo';
+    db::$config['host'] = 'mysql.hostinger.de';
+    db::$config['user'] = 'u659698584_ilyas';
+    db::$config['pass'] = 'ilyas1234';
+    db::$config['db'] = 'u659698584_kalo';
     // connect
     $this->connection = new mysqli(db::$config['host'], db::$config['user'], db::$config['pass'], db::$config['db']);
 
