@@ -12,6 +12,7 @@
      ?>
     
 <?php
+require_once 'mysqlcon.php';
 
 $db = mysqlcon::getConnection();
 

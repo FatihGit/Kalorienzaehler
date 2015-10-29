@@ -1,3 +1,5 @@
+
+
 <html>
     <head>
         <title>Login</title>
@@ -22,11 +24,15 @@
 </html>
 
 <?php
+
+
 session_start();
 ?> 
 
 <?php
 
+
+require_once 'mysqlcon.php';
 
 /*
 $mysqli = new mysqli("localhost", "u659698584_ilyas", "ilyas1234", "u659698584_kalo");
