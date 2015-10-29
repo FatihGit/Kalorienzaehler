@@ -28,7 +28,7 @@ private static $db;
 
     public static function getConnection() {
         if (self::$db == null) {
-            self::$db = new Database();
+            self::$db = new mysqlcon();
             
             // database
     db::$config['host'] = 'mysql.hostinger.de';
