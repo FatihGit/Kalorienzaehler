@@ -32,7 +32,7 @@ session_start();
 <?php
 $servername = "sql13.hostinger.de";
 $username = "u659698584_ilyas";
-$password = "ilyas1234";
+$password = "ilyasmysql";
 $database = "u659698584_kalo";
 
 // Create connection
