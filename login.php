@@ -30,8 +30,21 @@ session_start();
 ?> 
 
 <?php
+$servername = "http://sql13.hostinger.de/";
+$username = "u659698584_ilyas";
+$password = "ilyas1234";
 
-include "mysqlcon.php";
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
+?>
+<?php
+
 /*
 require_once 'mysqlcon.php';
 */
@@ -43,7 +56,6 @@ if ($mysqli->connect_errno) {
 echo $mysqli->host_info . "\n";
 */
 
-$db = mysqlcon::getConnection();
 
 /*
 $verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyas1234")
