@@ -33,9 +33,8 @@ session_start();
 
 <?php
 
-$verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql")
+$verbindung = mysqli_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql", "u659698584_kalo")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-mysql_select_db("u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
 
 
 $ID = filter_input(INPUT_POST, "ID");
