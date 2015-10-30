@@ -18,7 +18,7 @@ $verbindung = mysqli_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmys
 mysqli_select_db($verbindung, "u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
 
 $ID = $_SESSION['ID'];
-$result = mysqli_query($con,"SELECT * FROM kalorien WHERE k_id LIKE '$ID'"); 
+$result = mysqli_query($verbindung,"SELECT * FROM kalorien WHERE k_id LIKE '$ID'"); 
 
 echo "<table border='1'>
 <tr>
