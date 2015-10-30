@@ -36,10 +36,10 @@
 
 
 <?php
-$verbindung = mysql_connect("localhost", "root", "")
+$verbindung = mysqli_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql", "u659698584_kalo")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
 
-mysql_select_db("kalorienzaehlerdb") or die("Datenbank konnte nicht ausgewählt werden");
+
 
 
 $ID = $_SESSION['ID'];
@@ -62,15 +62,15 @@ $eiweiss = $gewicht * $e;
 $fett = $gewicht * $f;
 $kohlenhydrate = ($kalorien - ($eiweiss * 4) - ($fett * 9)) / 4;
 
-$result = mysql_query("SELECT B_ID FROM benutzer WHERE B_ID LIKE '$ID'");
-$menge = mysql_num_rows($result);
+$result = mysqli_query($verbindung, "SELECT B_ID FROM benutzer WHERE B_ID LIKE '$ID'");
+$menge = mysqli_num_rows($result);
 
 if ($menge == 0) {
     if (!empty($gewicht) && !empty($training) && !empty($ziel)) {
         $sql = "INSERT INTO benutzer (B_ID, gewicht, training, ziel) VALUES ('$ID', '$gewicht', '$training', '$ziel');";
         $sql2 = "INSERT INTO kalorien (k_id, Kalorien, Eiweiss, Kohlenhydrate, Fett) VALUES ('$ID', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett');";
-        $eintragen = mysql_query($sql);
-        $eintragen2 = mysql_query($sql2);
+        $eintragen = mysqli_query($verbindung, $sql);
+        $eintragen2 = mysqli_query($verbindung, $sql2);
 
         if ($eintragen == true && $eintragen2 == true) {
             echo "Kalorien für  <b>$ID</b> werden berechnet. <a href=\"anzeige.php\">Zu den Kalorien</a>";
