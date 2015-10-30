@@ -33,42 +33,11 @@ session_start();
 
 <?php
 
-/*
-$servername = "31.170.164.45.";
-$username = "u659698584_ilyas";
-$password = "ilyasmysql";
-$database = "u659698584_kalo";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-echo "Connected successfully";
-*/
-
-/*
-require_once 'mysqlcon.php';
-*/
-/*
-$mysqli = new mysqli("localhost", "u659698584_ilyas", "ilyas1234", "u659698584_kalo");
-if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-}
-echo $mysqli->host_info . "\n";
-*/
-
-
-
 $verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
 mysql_select_db("u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
 
-/*
-Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;
-*/
+
 $ID = filter_input(INPUT_POST, "ID");
 $passwort = filter_input(INPUT_POST, "passwort");
 $submit = filter_input(INPUT_POST, "submit");

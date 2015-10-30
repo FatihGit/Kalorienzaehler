@@ -12,18 +12,10 @@
      ?>
     
 <?php
-include "mysqlcon.php";
 
-$db = mysqlcon::getConnection();
-
-/*
-$con=mysqli_connect("localhost","root","","kalorienzaehlerdb");
-// Check connection
-if (mysqli_connect_errno())
-{
-echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-*/
+$verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql")
+        or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+mysql_select_db("u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
 
 $ID = $_SESSION['ID'];
 $result = mysqli_query($con,"SELECT * FROM kalorien WHERE k_id LIKE '$ID'"); 
