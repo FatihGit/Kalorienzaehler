@@ -18,7 +18,7 @@
 <a href="kalorienberechnung.php">Kalorien</a>
 </li>
 <li>
-<a href="">Logout</a>
+<a href="logout.php"">Logout</a>
 </li>
 </ul>
    </BODY>
