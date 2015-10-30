@@ -31,10 +31,8 @@ session_start();
 ?>
 
 <?php
-$verbindung = mysql_connect("localhost", "root", "")
+$verbindung = mysqli_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql", "u659698584_kalo")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-
-mysql_select_db("kalorienzaehlerdb") or die("Datenbank konnte nicht ausgewählt werden");
 
 $ID = filter_input(INPUT_POST, "ID");
 $_SESSION['ID'] = $ID;
@@ -63,13 +61,13 @@ $nachname = filter_input(INPUT_POST, "nachname");
  * 
  */
 
-$result = mysql_query("SELECT ID FROM benutzerlogin WHERE ID LIKE '$ID'");
-$menge = mysql_num_rows($result);
+$result = mysqli_query($verbindung, "SELECT ID FROM benutzerlogin WHERE ID LIKE '$ID'");
+$menge = mysqli_num_rows($result);
 if (isset($_POST['Submit'])) {
 
     if ($menge == 0) {
         $eintrag = "INSERT INTO benutzerlogin (ID, passwort, vorname, nachname) VALUES ('$ID', '$passwort', '$vorname', '$nachname')";
-        $eintragen = mysql_query($eintrag);
+        $eintragen = mysqli_query($verbindung, $eintrag);
 
         if ($eintragen == true) {
             echo "Benutzername <b>$ID</b> wurde erstellt. <a href=\"kalorienberechnung.php\">zur Kalorienberechnung</a>";
