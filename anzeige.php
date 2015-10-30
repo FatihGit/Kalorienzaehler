@@ -2,9 +2,58 @@
    <HEAD>
       <TITLE>Anzeige</TITLE>
       <link href="css/table.css" rel='stylesheet' type='text/css' />
+      
+      <style>
+#navi {
+	margin: 0;
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #000000;
+}
+
+#navi ul, #navi li{
+	margin: 0;
+	padding: 0;
+	display: inline;
+	list-style-type: none;
+}
+
+#navi a:link, #navi a:visited {
+	float: left;
+	line-height: 14px;
+	font-weight: bold;
+	margin: 0 10px 0 10px;
+	text-decoration: none;
+	color: #909090;
+}
+
+#navi #akt {
+	padding-bottom: 2px;
+	color: #000000;
+	border-bottom: 4px solid #000000;
+}
+
+#navi a:hover, #navi a:hover#akt {
+	padding-bottom: 2px;
+	color: #000000;
+	border-bottom: 4px solid #000000;
+}
+</style>
+      
+      
+      
    </HEAD>
    <BODY>
-       
+       <ul id="navi">
+<li>
+<a href="login.php" id="akt">Login</a>
+</li>
+<li>
+<a href="kalorienberechnung.php">Kalorien</a>
+</li>
+<li>
+<a href="">Logout</a>
+</li>
+</ul>
    </BODY>
 </HTML>
 <?php
