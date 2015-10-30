@@ -4,7 +4,17 @@
       <link href="css/table.css" rel='stylesheet' type='text/css' />
    </HEAD>
    <BODY>
-       
+       <ul id="navi">
+<li>
+<a href="login.php" id="akt">Login</a>
+</li>
+<li>
+<a href="kalorienberechnung.php">Kalorien</a>
+</li>
+<li>
+<a href="">Logout</a>
+</li>
+</ul>
    </BODY>
 </HTML>
 <?php
@@ -45,3 +55,4 @@ echo "</table>";
 
 mysqli_close($connection);
 ?>
+
