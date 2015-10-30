@@ -29,7 +29,11 @@
 session_start();
 ?> 
 
+
+
 <?php
+
+/*
 $servername = "31.170.164.45.";
 $username = "u659698584_ilyas";
 $password = "ilyasmysql";
@@ -43,8 +47,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 echo "Connected successfully";
-?>
-<?php
+*/
 
 /*
 require_once 'mysqlcon.php';
@@ -58,11 +61,11 @@ echo $mysqli->host_info . "\n";
 */
 
 
-/*
+
 $verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyas1234")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
 mysql_select_db("u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
-*/
+
 /*
 Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;
 */
