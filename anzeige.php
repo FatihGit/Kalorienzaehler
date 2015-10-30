@@ -13,12 +13,14 @@
     
 <?php
 
-$verbindung = mysqli_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql")
-        or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-mysqli_select_db($verbindung, "u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
+include "connection.php";
+
+$connection = new createCon();
+$connection->connect();
 
 $ID = $_SESSION['ID'];
-$result = mysqli_query($verbindung,"SELECT * FROM kalorien WHERE k_id LIKE '$ID'"); 
+$abfrage = "SELECT * FROM kalorien WHERE k_id LIKE '$ID'";
+$result = mysqli_query($connection->myconn, $abfrage);
 
 echo "<table border='1'>
 <tr>
@@ -40,6 +42,4 @@ echo "<td>" . $row['Fett'] ."</td>";
 echo "</tr>";
 }
 echo "</table>";
-
-mysqli_close($verbindung);
 ?>
