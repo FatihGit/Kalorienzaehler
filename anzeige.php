@@ -61,25 +61,19 @@
      ?>
     
 <?php
-include "mysqlcon.php";
 
-$db = mysqlcon::getConnection();
+include "connection.php";
 
-/*
-$con=mysqli_connect("localhost","root","","kalorienzaehlerdb");
-// Check connection
-if (mysqli_connect_errno())
-{
-echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-*/
+$connection = new createCon();
+$connection->connect();
 
 $ID = $_SESSION['ID'];
-$result = mysqli_query($con,"SELECT * FROM kalorien WHERE k_id LIKE '$ID'"); 
+$abfrage = "SELECT * FROM kalorien WHERE k_id LIKE '$ID'";
+$result = mysqli_query($connection->myconn, $abfrage);
 
 echo "<table border='1'>
 <tr>
-<th>Eiweiß</th>
+<th>Eiwei&szlig</th>
 <th>Kohlenhydrate</th>
 <th>Fett</th>
 </tr>";
@@ -87,7 +81,7 @@ echo "<table border='1'>
 while($row = mysqli_fetch_array($result))
 {
     echo "Hallo " . $row['k_id'] . "<br>"  ."Ihre Kalorien betragen: " . $row['Kalorien'] ."<br><br>".
-          "Die Makronährstoffe sind:"."<br><br>";
+          "Die Makron&aumlhrstoffe sind:"."<br><br>";
     
     
 echo "<tr>";
@@ -97,6 +91,4 @@ echo "<td>" . $row['Fett'] ."</td>";
 echo "</tr>";
 }
 echo "</table>";
-
-mysqli_close($con);
 ?>

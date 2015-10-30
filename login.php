@@ -29,37 +29,22 @@
 session_start();
 ?> 
 
+
+
 <?php
 
-include "mysqlcon.php";
-/*
-require_once 'mysqlcon.php';
-*/
-/*
-$mysqli = new mysqli("localhost", "u659698584_ilyas", "ilyas1234", "u659698584_kalo");
-if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-}
-echo $mysqli->host_info . "\n";
-*/
+include "connection.php";
 
-$db = mysqlcon::getConnection();
+$connection = new createCon();
+$connection->connect();
 
-/*
-$verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyas1234")
-        or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
-mysql_select_db("u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
-*/
-/*
-Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;
-*/
 $ID = filter_input(INPUT_POST, "ID");
 $passwort = filter_input(INPUT_POST, "passwort");
 $submit = filter_input(INPUT_POST, "submit");
 
 $abfrage = "SELECT ID, passwort FROM benutzerlogin WHERE ID LIKE '$ID' LIMIT 1";
-$ergebnis = mysql_query($abfrage);
-$row = mysql_fetch_object($ergebnis);
+$ergebnis = mysqli_query($connection->myconn, $abfrage);
+$row = mysqli_fetch_object($ergebnis);
 
 if (isset($_POST['Submit'])) {
 
