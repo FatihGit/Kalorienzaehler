@@ -62,7 +62,7 @@ echo $mysqli->host_info . "\n";
 
 
 
-$verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyas1234")
+$verbindung = mysql_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql")
         or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
 mysql_select_db("u659698584_kalo") or die("Datenbank konnte nicht ausgewählt werden");
 
