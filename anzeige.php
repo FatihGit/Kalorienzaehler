@@ -42,4 +42,6 @@ echo "<td>" . $row['Fett'] ."</td>";
 echo "</tr>";
 }
 echo "</table>";
+
+mysqli_close($connection);
 ?>

@@ -31,8 +31,10 @@ session_start();
 ?>
 
 <?php
-$verbindung = mysqli_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql", "u659698584_kalo")
-        or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+include "connection.php";
+
+$connection = new createCon();
+$connection->connect();
 
 $ID = filter_input(INPUT_POST, "ID");
 $_SESSION['ID'] = $ID;
@@ -61,7 +63,8 @@ $nachname = filter_input(INPUT_POST, "nachname");
  * 
  */
 
-$result = mysqli_query($verbindung, "SELECT ID FROM benutzerlogin WHERE ID LIKE '$ID'");
+$abfrage="SELECT ID FROM benutzerlogin WHERE ID LIKE '$ID'";
+$result = mysqli_query($connection->myconn, $abfrage);
 $menge = mysqli_num_rows($result);
 if (isset($_POST['Submit'])) {
 

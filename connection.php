@@ -11,10 +11,9 @@ class createCon  {
     function connect() {
         $con = mysqli_connect($this->host, $this->user, $this->pass, $this->db);
         if (!$con) {
-            die('Could not connect to database!');
+            die('Verbindung zum Server konnte nicht hergestellt werden!');
         } else {
-            $this->myconn = $con;
-            echo 'Connection established!';}
+            $this->myconn = $con;}
         return $this->myconn;
     }
 
