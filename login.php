@@ -33,16 +33,17 @@ session_start();
 
 <?php
 
-$verbindung = mysqli_connect("mysql.hostinger.de", "u659698584_ilyas", "ilyasmysql", "u659698584_kalo")
-        or die("Verbindung zur Datenbank konnte nicht hergestellt werden");
+include "connection.php";
 
+$connection = new createCon();
+$connection->connect();
 
 $ID = filter_input(INPUT_POST, "ID");
 $passwort = filter_input(INPUT_POST, "passwort");
 $submit = filter_input(INPUT_POST, "submit");
 
 $abfrage = "SELECT ID, passwort FROM benutzerlogin WHERE ID LIKE '$ID' LIMIT 1";
-$ergebnis = mysqli_query($verbindung, $abfrage);
+$ergebnis = mysqli_query($connection, $abfrage);
 $row = mysqli_fetch_object($ergebnis);
 
 if (isset($_POST['Submit'])) {
