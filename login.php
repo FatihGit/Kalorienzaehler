@@ -42,8 +42,8 @@ $passwort = filter_input(INPUT_POST, "passwort");
 $submit = filter_input(INPUT_POST, "submit");
 
 $abfrage = "SELECT ID, passwort FROM benutzerlogin WHERE ID LIKE '$ID' LIMIT 1";
-$ergebnis = mysql_query($abfrage);
-$row = mysql_fetch_object($ergebnis);
+$ergebnis = mysqli_query($verbindung, $abfrage);
+$row = mysqli_fetch_objects($ergebnis);
 
 if (isset($_POST['Submit'])) {
 
