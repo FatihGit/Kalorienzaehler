@@ -31,7 +31,7 @@ session_start();
 ?>
 
 <?php
-include "connection.php";
+include "mysql.php";
 
 $connection = new createCon();
 $connection->connect();
@@ -65,20 +65,20 @@ $nachname = filter_input(INPUT_POST, "nachname");
 
 $abfrage="SELECT ID FROM benutzerlogin WHERE ID LIKE '$ID'";
 $result = mysqli_query($connection->myconn, $abfrage);
-$menge = mysqli_num_rows($result);
+$anzahl = mysqli_num_rows($result);
 if (isset($_POST['Submit'])) {
 
-    if ($menge == 0) {
+    if ($anzahl == 0) {
         $eintrag = "INSERT INTO benutzerlogin (ID, passwort, vorname, nachname) VALUES ('$ID', '$passwort', '$vorname', '$nachname')";
-        $eintragen = mysqli_query($verbindung, $eintrag);
+        $eintragen = mysqli_query($connection->myconn, $eintrag);
 
         if ($eintragen == true) {
-            echo "Benutzername <b>$ID</b> wurde erstellt. <a href=\"kalorienberechnung.php\">zur Kalorienberechnung</a>";
+            header('Location: makros.php');
         } else {
             echo "Fehler beim Speichern des Benutzernames. <a href=\"benutzer.html\">Zurück</a>";
         }
     } else {
-        echo "Benutzername schon vorhanden. <a href=\"benutzer.html\">Zurück</a>";
+        echo "Benutzername schon vorhanden. <a href=\"benutzer.php\">Zurück</a>";
     }
 }
 ?>

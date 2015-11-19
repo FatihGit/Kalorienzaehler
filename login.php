@@ -33,7 +33,7 @@ session_start();
 
 <?php
 
-include "connection.php";
+include "mysql.php";
 
 $connection = new createCon();
 $connection->connect();
@@ -51,7 +51,7 @@ if (isset($_POST['Submit'])) {
     if (!empty($ID) && !empty($passwort )) {
         if ($row == true && $row->passwort == $passwort) {
             $_SESSION["ID"] = $ID;
-            echo 'Login erfolgreich <br> <a href="anzeige.php">Daten anzeigen</a>';
+            header('Location: anzeige3.php');
         } else {
             echo "Benutzername und/oder Passwort waren falsch. <a href=\"login.html\">Login</a>";
         }
@@ -59,8 +59,10 @@ if (isset($_POST['Submit'])) {
         echo "Bitte Benutzername und Passwort eingeben";
     }
 }
-
+/*
 mysqli_close($connection);
+ * s
+ */
 ?>
 
 
