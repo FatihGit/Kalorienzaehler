@@ -6,7 +6,23 @@
         <meta charset="utf-8">
         <link href="css/style.css" rel='stylesheet' type='text/css' />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>	
+    </head>
+    
+    <BODY>
+       <link href="css/site.css" rel='stylesheet' type='text/css' />
+       <ul id="navi">
+<li>
+<a href="login.php" id="akt">Login</a>
+</li>
+<li>
+<a href="kalorienberechnung.php">Kalorien</a>
+</li>
+<li>
+<a href="logout.php"">Logout</a>
+</li>
+</ul>
+   </BODY>
+    
     <form action="login.php" method="post">
         <h2>Login</h2>
         Dein Username:<br>
