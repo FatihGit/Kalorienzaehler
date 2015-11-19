@@ -136,4 +136,59 @@ echo "</table>";
  <FORM>
         <a href="nahrung.php" target="_blank">Nahrung adden</a>
     </FORM>
+
+<form action="anzeige3.php" method="post">
+<input type="text" name="bezSuche" />
+<input type="submit" name="search" value="Search" />
+</form>
+<?php
+
+
+    
+
+
+if (isset($_POST['search'])) {
+    $bezSuche = filter_input(INPUT_POST, "bezSuche");
+    $abfrageS = "SELECT * FROM nahrungen where bez like '%{$bezSuche}%'";
+$resultS = mysqli_query($connection->myconn, $abfrageS);
+$anzahl = mysqli_num_rows($resultS);
+    if ($anzahl == 0) {
+        echo "du opfer nix nahrung";
+    }
+    else
+    {
+
+echo "<table border='1'>
+<tr>
+<th>Bezeichung</th>
+<th>Kalorien</th>
+<th>Eiweiß</th>
+<th>Kohlenhydrate</th>
+<th>Fett</th>
+<th>Menge</th>
+<th>Update/Delete</th>
+</tr>";
+  
+  
+while($rowS = mysqli_fetch_array($resultS))
+{
+echo "<tr>";
+echo "<td>" . $rowS['bez'] . "</td>";
+echo "<td>" . $rowS['kalorien'] ."</td>";
+echo "<td>" . $rowS['eiweiss'] ."</td>";
+echo "<td>" . $rowS['kohlenhydrate'] ."</td>";
+echo "<td>" . $rowS['fett'] ."</td>";
+echo "<td>" . $rowS['menge'] ."</td>";
+echo "<td><a href=\"add.php?bez=".$rowS['bez']."\">Hinzufügen</a> <a href=\"edit.php?bez=".$rowS['bez']."\">Edit</a> | <a href=\"delete.php?bez=".$rowS['bez']."\">Delete</a></td>";
+echo "</tr>";
+}
+echo "</table>";
+}
+}
+
+?>
+
+
+
+
 </HTML>

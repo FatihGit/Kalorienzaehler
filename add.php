@@ -3,7 +3,7 @@
 
 <html>
 <head>	
-	<title>Edit Data</title>
+	<title>Add Data</title>
 </head>
 
 <?php
@@ -31,7 +31,7 @@ else
 }
    
 
-$abfrage="SELECT * FROM nahrung WHERE bez='$bez'";
+$abfrage="SELECT * FROM nahrungen WHERE bez='$bez'";
 //selecting data associated with this particular id
 $result = mysqli_query($connection->myconn,$abfrage);
 
@@ -46,7 +46,7 @@ while($row = mysqli_fetch_array($result))
 
 }
    
-if(isset($_POST['update']))
+if(isset($_POST['insert']))
 {	
     
       
@@ -60,9 +60,6 @@ if(isset($_POST['update']))
       $kalorien = ($eiweiss*4)+($kohlenhydrate*4)+($fett*9);
       
       
-     
-      $e=($kalorien/$menge)*$menge;
-      $kh=($kalorien/$menge)*$menge;
       
       
       
@@ -72,7 +69,7 @@ if(isset($_POST['update']))
             echo "<font color='red'>Menge field is empty.</font><br/>";
 			
 	} else {	
-                $abfrage2= "UPDATE nahrung SET menge='$menge', kalorien='$kalorien', eiweiss='$eiweiss', kohlenhydrate='$kohlenhydrate', fett='$fett'where bez='$bez2' AND n_b_id='$ID'";
+                $abfrage2 = "INSERT INTO nahrung (n_b_id, bez, kalorien, eiweiss, kohlenhydrate, fett, menge) VALUES ('$ID', '$bez2', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett', '$menge')";
 		$result2 = mysqli_query($connection->myconn, $abfrage2);
 		if ($result2 == true) {
                     header('Location: anzeige3.php');
@@ -80,7 +77,7 @@ if(isset($_POST['update']))
                 }
                 else
                 {
-                    echo "Fehler beim Update. <a href=\"edit.php\"></a>";
+                    echo "Fehler beim Insert. <a href=\"add.php\"></a>";
                 }
 	}
 }
@@ -89,7 +86,7 @@ if(isset($_POST['update']))
 	<a href="anzeige3.php">Home</a>
 	<br/><br/>
 	
-	<form name="form1" method="post" action="edit.php">
+	<form name="form1" method="post" action="add.php">
 		<table border="0">
 			<tr> 
                             <td>
@@ -111,7 +108,7 @@ if(isset($_POST['update']))
 			</tr>
                        
 			<tr>
-				<td><input type="submit" name="update" value="update"></td>
+				<td><input type="submit" name="insert" value="insert"></td>
 			</tr>
                      
 		</table>

@@ -15,13 +15,13 @@
                name="kalorien"><br><br>
         Eiweiß<br>
         <input type="number" size="24" maxlength="50"
-               name="eiweiss" step="any"><br><br>
+               name="eiweiss"><br><br>
         Kohlenhydrate:<br>
         <input type="number" size="24" maxlength="50"
-               name="kohlenhydrate" step="any"><br><br>
+               name="kohlenhydrate"><br><br>
         Fett:<br>
-        <input type="number" size="24" maxlength="50"
-               name="fett" step="any"><br><br>
+        <input type="number" step="any" size="24" maxlength="50"
+               name="fett"><br><br>
         Menge in g:<br>
         100<br><br>
         <input type="submit" name="Submit" value="Hinzufügen">
@@ -34,8 +34,10 @@ session_start();
 
 <?php
 include "mysql.php";
+
 $connection = new createCon();
 $connection->connect();
+
 $ID = $_SESSION['ID'];
 $bez = filter_input(INPUT_POST, "bez");
 $kalorien = filter_input(INPUT_POST, "kalorien");
@@ -43,6 +45,7 @@ $eiweiss = filter_input(INPUT_POST, "eiweiss");
 $kohlenhydrate = filter_input(INPUT_POST, "kohlenhydrate");
 $fett = filter_input(INPUT_POST, "fett");
 $menge = 100;
+
 /*
   if($passwort != $passwort2 OR $ID == "" OR $passwort == "")
   {
@@ -50,14 +53,18 @@ $menge = 100;
   exit;
   }
  */
+
 /*
   $passwort = $_POST['passwort'];
   $salt_str = 'musta126';
+
  */
+
 /*
   $gesaltetes_passwort = md5($salt_str . $passwort);
  * 
  */
+
 /*
 $abfrage="SELECT ID FROM benutzerlogin WHERE ID LIKE '$ID'";
 $result = mysqli_query($connection->myconn, $abfrage);
@@ -68,10 +75,12 @@ $abfrage="SELECT bez FROM nahrung WHERE bez LIKE '$bez'";
 $result = mysqli_query($connection->myconn, $abfrage);
 $anzahl = mysqli_num_rows($result);
 if (isset($_POST['Submit'])) 
+
 {
     if ($anzahl == 0) {
-        $eintrag = "INSERT INTO nahrungen (bez, kalorien, eiweiss, kohlenhydrate, fett, menge) VALUES ('$bez', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett', '$menge')";
+        $eintrag = "INSERT INTO nahrung (bez, kalorien, eiweiss, kohlenhydrate, fett, menge) VALUES ('$bez', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett', '$menge')";
         $eintragen = mysqli_query($connection->myconn, $eintrag);
+
         if ($eintragen == true) {
             header('Location: anzeige3.php');
         } else {
