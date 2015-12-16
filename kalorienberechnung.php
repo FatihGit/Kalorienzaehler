@@ -16,7 +16,7 @@
 <a href="kalorienberechnung.php">Kalorien</a>
 </li>
 <li>
-<a href="logout.php"">Logout</a>
+<a href="logout.php">Logout</a>
 </li>
 </ul>
    </BODY>
@@ -46,24 +46,27 @@
         Ziel:<br>
         Muskelaufbau<input type="radio" value="m" name="ziel">
         Fettabbau<input type="radio" value="f" name="ziel"><br>    
-        <input type="submit" value="Berechnen">
+        <input type="submit" name="berechnen" value="berechnen">
     </form>
 </html>
 
 
 <?php
-include "connection.php";
+include "mysql.php";
 
 $connection = new createCon();
 $connection->connect();
 
-
+if (isset($_POST['berechnen'])) {
 
 $ID = $_SESSION['ID'];
 $gewicht = filter_input(INPUT_POST, "gewicht");
 $training = filter_input(INPUT_POST, "training");
 $ziel = filter_input(INPUT_POST, "ziel");
 
+if (empty($ID) || empty($gewicht) || empty($training) || empty($ziel)) {
+        die ('You did not fill out the required fields');
+    }
 
 if ($ziel == 'm') {
     $z = 500;
@@ -84,7 +87,6 @@ $result = mysqli_query($connection->myconn, $abfrage);
 $menge = mysqli_num_rows($result);
 
 if ($menge == 0) {
-    if (!empty($gewicht) && !empty($training) && !empty($ziel)) {
         $sql = "INSERT INTO benutzer (B_ID, gewicht, training, ziel) VALUES ('$ID', '$gewicht', '$training', '$ziel');";
         $sql2 = "INSERT INTO kalorien (k_id, Kalorien, Eiweiss, Kohlenhydrate, Fett) VALUES ('$ID', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett');";
         $eintragen = mysqli_query($verbindung, $sql);
@@ -99,4 +101,5 @@ if ($menge == 0) {
 } else {
     echo "Benutzername schon vorhanden. <a href=\"benutzer.html\">Zurück</a>";
 }
+
 ?>

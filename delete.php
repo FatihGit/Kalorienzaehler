@@ -6,17 +6,17 @@ $connection = new createCon();
 $connection->connect();
 
 //getting id of the data from url
-if(isset($_GET['bez']))
+if(isset($_GET['nid']))
 {
-    $bez = $_GET['bez'];    
+    $nid = $_GET['nid'];    
 }
 else
 {
-    echo "Bez nicht gesetzt";
+    echo "nid nicht gesetzt";
 }
     
 
-$abfrage="DELETE FROM nahrung WHERE bez='$bez'";
+$abfrage="DELETE FROM nahrung WHERE n_ID='$nid'  ";
 //deleting the row from table
 $result = mysqli_query($connection->myconn, $abfrage);
 

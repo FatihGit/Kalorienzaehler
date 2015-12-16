@@ -1,46 +1,48 @@
+<?php
+include "navigation.php";
+?>
 <HTML>
    <HEAD>
       <TITLE>Anzeige</TITLE>
-      <link href="css/table.css" rel='stylesheet' type='text/css' />
       
-      
-      
-      
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="table.css">
    </HEAD>
    <BODY>
-       <link href="css/site.css" rel='stylesheet' type='text/css' />
-       <ul id="navi">
-<li>
-<a href="login.php" id="akt">Login</a>
-</li>
-<li>
-<a href="kalorienberechnung.php">Kalorien</a>
-</li>
-<li>
-<a href="logout.php">Logout</a>
-</li>
-</ul>
+   
+
    </BODY>
+</form>
+  </FORM>
 </HTML>
 <?php
         session_start();
-     ?>
-    
+?>
+
+
 <?php
       include "mysql.php";
 
         $connection = new createCon();
         $connection->connect();
+?>
+
+
+
+<?php
+    if(!isset($_SESSION['ID'])){
+        header("Location: login.php");
+    }
 
 $ID = $_SESSION['ID'];
 
 $abfrageK ="SELECT makros.Kalorien AS M, SUM(nahrung.kalorien) AS N, ROUND(((SUM(nahrung.kalorien)/makros.Kalorien)*100),0) AS Z FROM nahrung INNER JOIN makros ON nahrung.n_b_id=makros.m_ID WHERE n_b_id LIKE '$ID'"; 
 $result5 = mysqli_query($connection->myconn, $abfrageK);
 
-echo "<table border='1'>
-<thead>
-<th>Ziel</th>
-<th>derzeit</th>
+echo "<table class='table'>
+<thead style='text-align:center'>
+<th class='active'>Ziel</th>
+<th class='active'>derzeit</th>
 </thead>";
 
 while($row3 = mysqli_fetch_array($result5))
@@ -58,9 +60,9 @@ echo "</table><br>";
 
 $abfrage = "SELECT * FROM makros WHERE m_id LIKE '$ID'";
 $result = mysqli_query($connection->myconn, $abfrage);
-echo "<table border='1'>
-<tr>
-<th>Eiwei&szlig</th>
+echo "<table class='table'>
+<tr class='active' '>
+<th style='text-align:center'>Eiwei&szlig</th>
 <th>Kohlenhydrate</th>
 <th>Fett</th>
 </tr>";
@@ -77,7 +79,7 @@ echo "<td>" . $row['Fett'] ."</td>";
 echo "</tr>";
 
 }
-$abfrageSUM ="SELECT SUM(eiweiss) AS EW_SUM, SUM(kohlenhydrate) AS KH_SUM, SUM(fett) AS FETT_SUM FROM nahrung WHERE n_b_id LIKE '$ID'"; 
+$abfrageSUM ="SELECT ROUND(SUM(eiweiss),2) AS EW_SUM, ROUND(SUM(kohlenhydrate),2) AS KH_SUM, ROUND(SUM(fett),2) AS FETT_SUM FROM nahrung WHERE n_b_id LIKE '$ID'"; 
 $result3 = mysqli_query($connection->myconn, $abfrageSUM);
 
 while($row2 = mysqli_fetch_array($result3))
@@ -107,8 +109,8 @@ $result2 = mysqli_query($connection->myconn, $abfrage2);
 echo 
           "Ihre Nahrungen sind:"."<br><br>";
 
-echo "<table border='1'>
-<tr>
+echo "<table class='table'>
+<tr class='active'>
 <th>Bezeichung</th>
 <th>Kalorien</th>
 <th>Eiweiß</th>
@@ -128,7 +130,7 @@ echo "<td>" . $row['eiweiss'] ."</td>";
 echo "<td>" . $row['kohlenhydrate'] ."</td>";
 echo "<td>" . $row['fett'] ."</td>";
 echo "<td>" . $row['menge'] ."</td>";
-echo "<td><a href=\"edit.php?bez=".$row['bez']."\">Edit</a> | <a href=\"delete.php?bez=".$row['bez']."\">Delete</a></td>";
+echo "<td><a href=\"edit.php?nid=".$row['n_id']."\">Edit</a> | <a href=\"delete.php?nid=".$row['n_id']."\">Delete</a></td>";
 echo "</tr>";
 }
 echo "</table>";
@@ -155,18 +157,16 @@ $anzahl = mysqli_num_rows($resultS);
     if ($anzahl == 0) {
         echo "du opfer nix nahrung";
     }
-    else
-    {
 
-echo "<table border='1'>
-<tr>
+echo "<table class='table'>
+<tr class='active'>
 <th>Bezeichung</th>
 <th>Kalorien</th>
 <th>Eiweiß</th>
 <th>Kohlenhydrate</th>
 <th>Fett</th>
 <th>Menge</th>
-<th>Update/Delete</th>
+<th>Hinzufügen</th>
 </tr>";
   
   
@@ -179,13 +179,13 @@ echo "<td>" . $rowS['eiweiss'] ."</td>";
 echo "<td>" . $rowS['kohlenhydrate'] ."</td>";
 echo "<td>" . $rowS['fett'] ."</td>";
 echo "<td>" . $rowS['menge'] ."</td>";
-echo "<td><a href=\"add.php?bez=".$rowS['bez']."\">Hinzufügen</a> <a href=\"edit.php?bez=".$rowS['bez']."\">Edit</a> | <a href=\"delete.php?bez=".$rowS['bez']."\">Delete</a></td>";
+echo "<td><a href=\"add.php?bez=".$rowS['bez']."\">Hinzufügen</a></td>";
 echo "</tr>";
 }
 echo "</table>";
 }
-}
 
+ 
 ?>
 
 

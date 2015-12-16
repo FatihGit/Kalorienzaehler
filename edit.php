@@ -20,24 +20,25 @@ include "mysql.php";
 
 
 //getting id from url
-if(isset($_GET['bez']))
+if(isset($_GET['nid']))
 {
-    $bez = $_GET['bez'];    
+    $nid = $_GET['nid'];    
     
 }
 else
 {
-    echo "Bez nicht gesetzt";
+    echo "nid nicht gesetzt";
 }
    
 
-$abfrage="SELECT * FROM nahrung WHERE bez='$bez'";
+$abfrage="SELECT * FROM nahrung WHERE n_id='$nid'";
 //selecting data associated with this particular id
 $result = mysqli_query($connection->myconn,$abfrage);
 
 
 while($row = mysqli_fetch_array($result))
 {
+        $bez=$row['bez'];
 	$menge = $row['menge'];
         $kalorien = $row['kalorien']/$menge;
         $eiweiss = $row['eiweiss']/$menge;
@@ -51,11 +52,13 @@ if(isset($_POST['update']))
     
       
       $ID = $_SESSION['ID'];
+      $nid2 = filter_input(INPUT_POST, "nid2");
       $bez2 = filter_input(INPUT_POST, "bez2");
       $menge = filter_input(INPUT_POST, "menge");
       $eiweiss = filter_input(INPUT_POST, "eiweiss")*$menge;
       $kohlenhydrate = filter_input(INPUT_POST, "kohlenhydrate")*$menge;
       $fett = filter_input(INPUT_POST, "fett")*$menge;
+
       
       $kalorien = ($eiweiss*4)+($kohlenhydrate*4)+($fett*9);
       
@@ -72,7 +75,7 @@ if(isset($_POST['update']))
             echo "<font color='red'>Menge field is empty.</font><br/>";
 			
 	} else {	
-                $abfrage2= "UPDATE nahrung SET menge='$menge', kalorien='$kalorien', eiweiss='$eiweiss', kohlenhydrate='$kohlenhydrate', fett='$fett'where bez='$bez2' AND n_b_id='$ID'";
+                $abfrage2= "UPDATE nahrung SET menge='$menge', kalorien='$kalorien', eiweiss='$eiweiss', kohlenhydrate='$kohlenhydrate', fett='$fett' where n_id='$nid2' AND n_b_id='$ID'";
 		$result2 = mysqli_query($connection->myconn, $abfrage2);
 		if ($result2 == true) {
                     header('Location: anzeige3.php');
@@ -93,6 +96,7 @@ if(isset($_POST['update']))
 		<table border="0">
 			<tr> 
                             <td>
+                                <?php echo $nid; ?>
                                 <?php echo $bez; ?>
                                 <?php echo "" . $_SESSION['ID']; ?>
                                 
@@ -101,6 +105,7 @@ if(isset($_POST['update']))
                         <tr>
 				<td>Menge</td>
                                 <td>
+                                    <input type="hidden" name="nid2" value=<?php echo '"'.$nid.'"';?>/>
                                     <input type="hidden" name="bez2" value=<?php echo '"'.$bez.'"';?>/>
                                     <td><input type="hidden" name="kalorien" value=<?php echo $kalorien;?>>
                                         <td><input type="hidden" name="eiweiss" value=<?php echo $eiweiss;?>/>

@@ -45,7 +45,7 @@
         Ziel:<br>
         Muskelaufbau<input type="radio" value="m" name="ziel">
         Fettabbau<input type="radio" value="f" name="ziel"><br>    
-        <input type="submit" value="Berechnen">
+        <input type="submit" name="berechnen" value="Berechnen">
     </form>
 </html>
 <?php
@@ -56,10 +56,17 @@ include "mysql.php";
 $connection = new createCon();
 $connection->connect();
 
+if (isset($_POST['berechnen'])) {
+
 $ID = $_SESSION['ID'];
 $gewicht = filter_input(INPUT_POST, "gewicht");
 $training = filter_input(INPUT_POST, "training");
 $ziel = filter_input(INPUT_POST, "ziel");
+
+if (empty($ID) || empty($gewicht) || empty($training) || empty($ziel)) {
+        die ('You did not fill out the required fields');
+    }
+    
 if ($ziel == 'm') {
     $z = 500;
     $e = 2;
@@ -73,11 +80,11 @@ $kalorien = ($gewicht * 30) + $z + ($training*100);
 $eiweiss = $gewicht * $e;
 $fett = $gewicht * $f;
 $kohlenhydrate = ($kalorien - ($eiweiss * 4) - ($fett * 9)) / 4;
+
 $abfrage="SELECT B_ID FROM benutzer WHERE B_ID LIKE '$ID'";
 $result = mysqli_query($connection->myconn, $abfrage);
 $menge = mysqli_num_rows($result);
 if ($menge == 0) {
-    if (!empty($gewicht) && !empty($training) && !empty($ziel)) {
         $sql = "INSERT INTO benutzer (B_ID, gewicht, training, ziel) VALUES ('$ID', '$gewicht', '$training', '$ziel');";
         $sql2 = "INSERT INTO makros (m_id, Kalorien, Eiweiss, Kohlenhydrate, Fett) VALUES ('$ID', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett');";
         $eintragen = mysqli_query($connection->myconn, $sql);
@@ -88,7 +95,9 @@ if ($menge == 0) {
             echo "Fehler beim Speichern des Benutzernamens. <a href=\"benutzer.html\">Zurück</a>";
         }
     }
-} else {
+    else {
     echo "Benutzername schon vorhanden. <a href=\"benutzer.html\">Zurück</a>";
+} 
 }
+
 ?>

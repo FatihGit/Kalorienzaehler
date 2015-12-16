@@ -1,15 +1,12 @@
-
-
-
 <html>
 <head>	
 	<title>Add Data</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
 </head>
 
 <?php
 // including the database connection file
 include "mysql.php";
-
         $connection = new createCon();
         $connection->connect();
 ?>
@@ -17,8 +14,6 @@ include "mysql.php";
         session_start();
      ?>
 <?php
-
-
 //getting id from url
 if(isset($_GET['bez']))
 {
@@ -30,12 +25,10 @@ else
     echo "Bez nicht gesetzt";
 }
    
-
 $abfrage="SELECT * FROM nahrungen WHERE bez='$bez'";
 //selecting data associated with this particular id
 $result = mysqli_query($connection->myconn,$abfrage);
-
-
+$menge = mysqli_num_rows($result);
 while($row = mysqli_fetch_array($result))
 {
 	$menge = $row['menge'];
@@ -43,8 +36,13 @@ while($row = mysqli_fetch_array($result))
         $eiweiss = $row['eiweiss']/$menge;
         $kohlenhydrate = $row['kohlenhydrate']/$menge;
         $fett = $row['fett']/$menge;
-
 }
+
+
+if ($menge != 0) {
+         echo "Die Nahrung haben sie bereits geaddet. <a href=\"anzeige3..php\"></a>";
+} else {
+   
    
 if(isset($_POST['insert']))
 {	
@@ -56,6 +54,7 @@ if(isset($_POST['insert']))
       $eiweiss = filter_input(INPUT_POST, "eiweiss")*$menge;
       $kohlenhydrate = filter_input(INPUT_POST, "kohlenhydrate")*$menge;
       $fett = filter_input(INPUT_POST, "fett")*$menge;
+      $datum = date("Y-m-d");
       
       $kalorien = ($eiweiss*4)+($kohlenhydrate*4)+($fett*9);
       
@@ -69,7 +68,7 @@ if(isset($_POST['insert']))
             echo "<font color='red'>Menge field is empty.</font><br/>";
 			
 	} else {	
-                $abfrage2 = "INSERT INTO nahrung (n_b_id, bez, kalorien, eiweiss, kohlenhydrate, fett, menge) VALUES ('$ID', '$bez2', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett', '$menge')";
+                $abfrage2 = "INSERT INTO nahrung (n_b_id, bez, kalorien, eiweiss, kohlenhydrate, fett, menge, datum) VALUES ('$ID', '$bez2', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett', '$menge', '$datum')";
 		$result2 = mysqli_query($connection->myconn, $abfrage2);
 		if ($result2 == true) {
                     header('Location: anzeige3.php');
@@ -81,13 +80,14 @@ if(isset($_POST['insert']))
                 }
 	}
 }
+}
 ?>
 <body>
-	<a href="anzeige3.php">Home</a>
+	<a href="anzeige3.php">Anzeige3</a>
 	<br/><br/>
 	
 	<form name="form1" method="post" action="add.php">
-		<table border="0">
+		<table class='table'>
 			<tr> 
                             <td>
                                 <?php echo $bez; ?>

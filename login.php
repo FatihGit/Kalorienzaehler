@@ -1,29 +1,19 @@
 
-
+<?php
+include "navigation.php";
+?>
 <html>
-    <head>
-        <title>Login</title>
-        <meta charset="utf-8">
-        <link href="css/style.css" rel='stylesheet' type='text/css' />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+    <HEAD>
+      <TITLE>Login</TITLE>
+      
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+   </HEAD>
     
     <BODY>
-       <link href="css/site.css" rel='stylesheet' type='text/css' />
-       <ul id="navi">
-<li>
-<a href="login.php" id="akt">Login</a>
-</li>
-<li>
-<a href="kalorienberechnung.php">Kalorien</a>
-</li>
-<li>
-<a href="logout.php">Logout</a>
-</li>
-</ul>
+
    </BODY>
-    
-    <form action="login.php" method="post">
+     <div class="container">
+    <form class="form-signin" action="login.php" method="post">
         <h2>Login</h2>
         Dein Username:<br>
         <input type="text" size="24" maxlength="50"
@@ -37,6 +27,7 @@
 
         <a href="benutzer.php" target="_blank">Registrieren</a>
     </form>
+     </div>
 </html>
 
 <?php
@@ -51,12 +42,17 @@ session_start();
 
 include "mysql.php";
 
+
 $connection = new createCon();
 $connection->connect();
 
 $ID = filter_input(INPUT_POST, "ID");
 $passwort = filter_input(INPUT_POST, "passwort");
-$submit = filter_input(INPUT_POST, "submit");
+
+
+    $secret_salt = $ID;
+    $salted_password = $secret_salt . $passwort;
+    $password_hash = hash('sha512', $salted_password);
 
 $abfrage = "SELECT ID, passwort FROM benutzerlogin WHERE ID LIKE '$ID' LIMIT 1";
 $ergebnis = mysqli_query($connection->myconn, $abfrage);
@@ -65,12 +61,16 @@ $row = mysqli_fetch_object($ergebnis);
 if (isset($_POST['Submit'])) {
 
     if (!empty($ID) && !empty($passwort )) {
-        if ($row == true && $row->passwort == $passwort) {
+        
+
+        if ($row == true && $row->passwort == $password_hash) {
+            
             $_SESSION["ID"] = $ID;
             header('Location: anzeige3.php');
         } else {
             echo "Benutzername und/oder Passwort waren falsch. <a href=\"login.html\">Login</a>";
         }
+                
     } else {
         echo "Bitte Benutzername und Passwort eingeben";
     }
