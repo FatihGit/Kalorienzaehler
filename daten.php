@@ -23,6 +23,7 @@ $connection->connect();
 
 
 if(!isset($_SESSION['ID'])){
+        echo "bitte alles ausfüllen!";
         header("Location: index.php");
     }
 

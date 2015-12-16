@@ -5,8 +5,9 @@ include "navigation.php";
     <head>
         <title>Kalorienberechnung</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-    </head>	    
-    <form action="makros.php" method="post">
+    </head>	
+     <div class="container">
+    <form class="form-signin" action="makros.php" method="post">
         <h2>Kalorien berechnen</h2>
         Deine ID<br>
         <?php
@@ -32,6 +33,7 @@ include "navigation.php";
         Fettabbau<input type="radio" value="f" name="ziel"><br>    
         <input type="submit" name="berechnen" value="Berechnen">
     </form>
+     </div>
 </html>
 <?php
 
