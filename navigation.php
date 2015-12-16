@@ -13,7 +13,7 @@
             <ul class="nav navbar-nav">
 
 
-                <li><a href="login.php">Login</a></li>
+                <li><a href="index.php">Login</a></li>
                 
                 <li><a href="daten.php">Meine Daten</a></li>
 

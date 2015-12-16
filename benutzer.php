@@ -47,7 +47,7 @@ $connection = new createCon();
 $connection->connect();
 
 if(!isset($_SESSION['ID'])){
-        header("Location: login.php");
+        header("Location: index.php");
     }
 $ID = filter_input(INPUT_POST, "ID");
 $_SESSION['ID'] = $ID;

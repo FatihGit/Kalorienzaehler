@@ -1,11 +1,13 @@
+<?php
+include "navigation.php";
+?>
 <html>
     <head>
         <title>Nahrung</title>
-        <meta charset="utf-8">
-        <link href="css/style.css" rel='stylesheet' type='text/css' />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     </head>	
-    <form action="nahrung.php" method="post">
+    <div class="container">
+    <form class="form-signin" action="nahrung.php" method="post">
         <h2>Nahrung hinzufügen</h2>
         Nahrungsbezeichung<br>
         <input type="text" size="24" maxlength="50"
@@ -26,6 +28,7 @@
         100<br><br>
         <input type="submit" name="Submit" value="Hinzufügen">
     </form>
+        </div>
 </html>
 
 <?php
@@ -36,6 +39,11 @@ session_start();
 include "mysql.php";
 $connection = new createCon();
 $connection->connect();
+
+if(!isset($_SESSION['ID'])){
+        header("Location: index.php");
+    }
+
 $ID = $_SESSION['ID'];
 $bez = filter_input(INPUT_POST, "bez");
 $kalorien = filter_input(INPUT_POST, "kalorien");

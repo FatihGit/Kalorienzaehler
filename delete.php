@@ -1,4 +1,7 @@
 <?php
+include "navigation.php";
+?>
+<?php
 //including the database connection file
 include "mysql.php";
 

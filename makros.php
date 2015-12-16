@@ -1,26 +1,11 @@
+<?php
+include "navigation.php";
+?>
 <html>
     <head>
         <title>Kalorienberechnung</title>
-        <meta charset="utf-8">
-        <link href="css/style.css" rel='stylesheet' type='text/css' />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>	
-    
-    <BODY>
-       <link href="css/site.css" rel='stylesheet' type='text/css' />
-       <ul id="navi">
-<li>
-<a href="login.php" id="akt">Login</a>
-</li>
-<li>
-<a href="kalorienberechnung.php">Kalorien</a>
-</li>
-<li>
-<a href="logout.php">Logout</a>
-</li>
-</ul>
-   </BODY>
-    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    </head>	    
     <form action="makros.php" method="post">
         <h2>Kalorien berechnen</h2>
         Deine ID<br>
@@ -56,6 +41,9 @@ include "mysql.php";
 $connection = new createCon();
 $connection->connect();
 
+if(!isset($_SESSION['ID'])){
+        header("Location: index.php");
+    }
 if (isset($_POST['berechnen'])) {
 
 $ID = $_SESSION['ID'];

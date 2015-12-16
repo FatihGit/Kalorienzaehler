@@ -1,3 +1,6 @@
+<?php
+include "navigation.php";
+?>
 <html>
     <head>
         <title>Nahrung</title>
@@ -37,6 +40,9 @@ include "mysql.php";
 
 $connection = new createCon();
 $connection->connect();
+if(!isset($_SESSION['ID'])){
+        header("Location: index.php");
+    }
 
 $ID = $_SESSION['ID'];
 $bez = filter_input(INPUT_POST, "bez");

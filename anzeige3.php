@@ -31,7 +31,7 @@ include "navigation.php";
 
 <?php
     if(!isset($_SESSION['ID'])){
-        header("Location: login.php");
+        header("Location: index.php");
     }
 
 $ID = $_SESSION['ID'];

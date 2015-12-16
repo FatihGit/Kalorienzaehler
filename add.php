@@ -1,3 +1,6 @@
+<?php
+include "navigation.php";
+?>
 <html>
 <head>	
 	<title>Add Data</title>
@@ -14,6 +17,10 @@ include "mysql.php";
         session_start();
      ?>
 <?php
+
+if(!isset($_SESSION['ID'])){
+        header("Location: index.php");
+    }
 //getting id from url
 if(isset($_GET['bez']))
 {
@@ -36,13 +43,7 @@ while($row = mysqli_fetch_array($result))
         $eiweiss = $row['eiweiss']/$menge;
         $kohlenhydrate = $row['kohlenhydrate']/$menge;
         $fett = $row['fett']/$menge;
-}
-
-
-if ($menge != 0) {
-         echo "Die Nahrung haben sie bereits geaddet. <a href=\"anzeige3..php\"></a>";
-} else {
-   
+}   
    
 if(isset($_POST['insert']))
 {	
@@ -80,11 +81,10 @@ if(isset($_POST['insert']))
                 }
 	}
 }
-}
+
 ?>
 <body>
-	<a href="anzeige3.php">Anzeige3</a>
-	<br/><br/>
+	
 	
 	<form name="form1" method="post" action="add.php">
 		<table class='table'>
