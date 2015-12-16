@@ -21,6 +21,11 @@ include "mysql.php";
 $connection = new createCon();
 $connection->connect();
 
+
+if(!isset($_SESSION['ID'])){
+        header("Location: login.php");
+    }
+
 $ID = $_SESSION['ID'];
      
   $abfrage="SELECT * FROM benutzer WHERE B_ID LIKE '$ID'";
