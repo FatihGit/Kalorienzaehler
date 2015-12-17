@@ -9,17 +9,19 @@ class createCon  {
     var $db = 'u659698584_kalor';
     var $myconn;
    
-     
-/*
     
+     
+
+    /*
     var $host = 'localhost';
     var $user = 'root';
     var $pass = '';
     var $db = 'kalorienzaehlerdb';
     var $myconn;
  
- * 
- */
+     * 
+     */
+ 
      
      
 

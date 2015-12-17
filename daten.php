@@ -50,7 +50,7 @@ $ziel = filter_input(INPUT_POST, "ziel");
 
 if (empty($ID) || empty($gewicht) || empty($training) || empty($ziel)) {
         header('Location: daten.php');
-        die ('You did not fill out the required fields');
+        die ('Bitte füllen Sie alle Felder aus!');
         
     }
     
@@ -109,8 +109,8 @@ $kohlenhydrate = ($kalorien - ($eiweiss * 4) - ($fett * 9)) / 4;
         </select>
         <br><br>
         Ziel:<br>
-        Muskelaufbau<input type="radio" value="m" name="ziel">
-        Fettabbau<input type="radio" value="f" name="ziel"><br>    
+        Muskelaufbau <input type="radio" value="m" name="ziel">
+        Fettabbau <input type="radio" value="f" name="ziel"><br>    
         <input type="submit" name="aktualisieren" value="aktualisieren">
     </form>
           </div>

@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
     $password_hash = hash('sha512', $salted_password);
 
     if (empty($ID) || empty($passwort) || empty($passwort2) || empty($vorname) || empty($nachname)) {
-        die('You did not fill out the required fields');
+        die('Sie müssen alle Felder ausfüllen!');
     }
     if ($passwort != $passwort2) {
         die('Passwort stimmt nicht überein!');

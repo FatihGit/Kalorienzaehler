@@ -30,8 +30,8 @@ include "navigation.php";
         </select>
         <br><br>
         Ziel:<br>
-        Muskelaufbau<input type="radio" value="m" name="ziel">
-        Fettabbau<input type="radio" value="f" name="ziel"><br>    
+        Muskelaufbau <input type="radio" value="m" name="ziel">
+        Fettabbau <input type="radio" value="f" name="ziel"><br>    
         <input type="submit" name="berechnen" value="Berechnen">
     </form>
      </div>
@@ -55,7 +55,8 @@ $training = filter_input(INPUT_POST, "training");
 $ziel = filter_input(INPUT_POST, "ziel");
 
 if (empty($ID) || empty($gewicht) || empty($training) || empty($ziel)) {
-        die ('You did not fill out the required fields');
+        die ('Bitte füllen Sie alle Felder aus!');
+        
     }
     
 if ($ziel == 'm') {
