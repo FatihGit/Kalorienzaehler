@@ -96,7 +96,6 @@ if(isset($_POST['update']))
 		<table border="0">
 			<tr> 
                             <td>
-                                <?php echo $nid; ?>
                                 <?php echo $bez; ?>
                                 <?php echo "" . $_SESSION['ID']; ?>
                                 
