@@ -63,9 +63,13 @@ include "navigation.php";
         $kalorien = ($eiweiss * 4) + ($kohlenhydrate * 4) + ($fett * 9);
         if (empty($bez) || empty($kalorien) || empty($eiweiss) || empty($kohlenhydrate) || empty($fett)) {
             echo ('SIe müssen alle Felder ausfüllen!');
+            if($kalorien==0){
+                echo ("Bitte zuerst die Kalorien aktualisieren");
+            }
         }
     }
     if (isset($_POST['Submit'])) {
+        
         $bez = filter_input(INPUT_POST, "bez");
         $kalorien = filter_input(INPUT_POST, "kalorien");
         $eiweiss = filter_input(INPUT_POST, "eiweiss");
@@ -78,6 +82,9 @@ include "navigation.php";
         }
         else
         {
+            if(!isset($_POST['berechnen'])){
+            echo "bitte zuerst die Kalroien aktualisieren";
+        }
         if ($anzahl == 0) {
             $eintrag = "INSERT INTO nahrungen (bez, kalorien, eiweiss, kohlenhydrate, fett, menge) VALUES ('$bez', '$kalorien', '$eiweiss', '$kohlenhydrate', '$fett', '$menge')";
             $eintragen = mysqli_query($connection->myconn, $eintrag);

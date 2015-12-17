@@ -56,8 +56,10 @@ $ziel = filter_input(INPUT_POST, "ziel");
 
 if (empty($ID) || empty($gewicht) || empty($training) || empty($ziel)) {
         die ('Bitte füllen Sie alle Felder aus!');
-        
     }
+   if($gewicht<0){
+       die ('Gewicht darf nicht negativ sein');
+   }
     
 if ($ziel == 'm') {
     $z = 500;
