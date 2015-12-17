@@ -5,6 +5,7 @@ include "navigation.php";
     <head>
         <title>Kalorienberechnung</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
     </head>	
      <div class="container" style="background: navajowhite;">
     <form class="form-signin" action="makros.php" method="post">

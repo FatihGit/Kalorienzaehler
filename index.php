@@ -7,6 +7,7 @@ include "navigation.php";
       <TITLE>Login</TITLE>
       
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
    </HEAD>
     
     <BODY>
@@ -25,7 +26,7 @@ include "navigation.php";
         <br>
         <input type="submit" name="Submit" class="btn btn-success" value="Login">
 
-        <a href="benutzer.php" target="_blank" class="btn btn-primary btn-lg active"  >Registrieren</a>
+        <a href="benutzer.php"  class="btn btn-primary btn-lg active"  >Registrieren</a>
     </form>
      </div>
 </html>

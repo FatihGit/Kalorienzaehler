@@ -137,7 +137,7 @@ echo "</tr>";
 echo "</table>";
 ?>
  <FORM>
-        <a href="nahrung.php" target="_blank">Nahrung adden</a>
+        <a href="nahrung.php">Nahrung adden</a>
     </FORM>
 
 <form action="anzeige3.php" method="post">
@@ -156,7 +156,7 @@ if (isset($_POST['search'])) {
 $resultS = mysqli_query($connection->myconn, $abfrageS);
 $anzahl = mysqli_num_rows($resultS);
     if ($anzahl == 0) {
-        echo "du opfer nix nahrung";
+        echo "Ihre Suche ergab keinen Treffer";
     }
 
 echo "<table class='table'>

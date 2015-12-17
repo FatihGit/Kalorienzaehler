@@ -2,16 +2,15 @@
 
 class createCon  {
     
-   
+   /*
     var $host = 'mysql.hostinger.de';
     var $user = 'u659698584_ilyas';
     var $pass = 'ilyas12345678';
     var $db = 'u659698584_kalor';
     var $myconn;
-   
-    
+    * 
+    */
      
-     /*
 
     
     var $host = 'localhost';
@@ -19,8 +18,6 @@ class createCon  {
     var $pass = '';
     var $db = 'kalorienzaehlerdb';
     var $myconn;
-      * 
-      */
  
      
      
