@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
         if ($eintragen == true) {
             header('Location: makros.php');
         } else {
-            echo "Fehler beim Speichern des Benutzernames. <a href=\"benutzer.html\">Zurück</a>";
+            echo "Fehler beim Speichern des Benutzernames.";
         }
     }
 }

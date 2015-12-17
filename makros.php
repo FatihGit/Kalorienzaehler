@@ -86,11 +86,11 @@ if ($menge == 0) {
         if ($eintragen == true && $eintragen2 == true) {
             echo "Kalorien für  <b>$ID</b> werden berechnet. <a href=\"anzeige3.php\">Zu den Kalorien</a>";
         } else {
-            echo "Fehler beim Speichern des Benutzernamens. <a href=\"benutzer.html\">Zurück</a>";
+            echo "Fehler beim Speichern.";
         }
     }
     else {
-    echo "Benutzername schon vorhanden. <a href=\"benutzer.html\">Zurück</a>";
+    echo "Benutzername schon vorhanden.";
 } 
 }
 

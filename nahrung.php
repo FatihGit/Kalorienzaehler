@@ -91,10 +91,10 @@ include "navigation.php";
             if ($eintragen == true) {
                 header('Location: anzeige3.php');
             } else {
-                echo "Fehler beim Speichern der Nahrung. <a href=\"nahrung.php\">Zurück</a>";
+                echo "Fehler beim Speichern der Nahrung.";
             }
         } else {
-            echo "Nahrung schon vorhanden. <a href=\"nahrung.php\">Zurück</a>";
+            echo "Nahrung schon vorhanden.";
         }
         }
     }

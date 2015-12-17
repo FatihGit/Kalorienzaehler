@@ -69,7 +69,7 @@ if (isset($_POST['Submit'])) {
             $_SESSION["ID"] = $ID;
             header('Location: anzeige3.php');
         } else {
-            echo "Benutzername und/oder Passwort waren falsch. <a href=\"login.html\">Login</a>";
+            echo "Benutzername und/oder Passwort waren falsch.";
         }
                 
     } else {

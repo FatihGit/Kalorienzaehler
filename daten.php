@@ -81,7 +81,7 @@ $kohlenhydrate = ($kalorien - ($eiweiss * 4) - ($fett * 9)) / 4;
         } 
         else 
             {
-            echo "Fehler beim Speichern des Benutzernamens. <a href=\"benutzer.html\">Zurück</a>";
+            echo "Fehler beim Speichern";
         }
     
    
