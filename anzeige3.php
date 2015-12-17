@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: charset=utf-8'); 
 include "navigation.php";
 ?>
 <HTML>
