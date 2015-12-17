@@ -17,12 +17,14 @@ include "navigation.php";
         
             <h2>Registrierung</h2>
             Dein Username:<br>
-            <input type="text" size="24" maxlength="50"
-                   name="ID"><br><br>
+            <input type="text" size="24" minlength="4" maxlength="50"
+                   name="ID">
+            <p> (mind. 4 Zeichen)</p>
+            
             Dein Passwort:<br>
             <input type="password" size="24" minlength="12" maxlength="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                    name="passwort">
-            <p> (mindestens 12 Groß- und Kleinbuchstaben sowie Sonderzeichen und Ziffern) </p>
+            <p> (mind. 12 Gro&szlig; und Kleinbuchstaben sowie Sonderzeichen und Ziffern) </p>
             Passwort wiederholen:<br>
             <input type="password" size="24" minlength="12" maxlength="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                    name="passwort2"><br><br>
