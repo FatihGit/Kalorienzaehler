@@ -12,7 +12,7 @@ include "navigation.php";
     <BODY>
 
    </BODY>
-     <div class="container">
+     <div class="container" style="background: sandybrown;">
     <form class="form-signin" action="index.php" method="post">
         <h2>Login</h2>
         Dein Username:<br>
@@ -23,9 +23,9 @@ include "navigation.php";
         <input type="password" size="24" maxlength="50"
                name="passwort"><br><br>
         <br>
-        <input type="submit" name="Submit" value="Login">
+        <input type="submit" name="Submit" class="btn btn-success" value="Login">
 
-        <a href="benutzer.php" target="_blank">Registrieren</a>
+        <a href="benutzer.php" target="_blank" class="btn btn-primary btn-lg active"  >Registrieren</a>
     </form>
      </div>
 </html>

@@ -85,7 +85,7 @@ $kohlenhydrate = ($kalorien - ($eiweiss * 4) - ($fett * 9)) / 4;
 
 
 ?>
-     <div class="container">
+     <div class="container" style="background: navajowhite;">
 <form class="form-signin" action="daten.php" method="post">
         <h2>Meine Daten</h2>
         Deine ID<br>

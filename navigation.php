@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
 
-    <div class="container">
+    <div class="container" style="background: lightblue;">
 
         <div class="navbar-header">
 

@@ -6,7 +6,7 @@ include "navigation.php";
         <title>Kalorienberechnung</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     </head>	
-     <div class="container">
+     <div class="container" style="background: navajowhite;">
     <form class="form-signin" action="makros.php" method="post">
         <h2>Kalorien berechnen</h2>
         Deine ID<br>

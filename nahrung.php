@@ -6,7 +6,7 @@ include "navigation.php";
         <title>Nahrung</title>
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     </head>	
-    <div class="container">
+    <div class="container" style="background: navajowhite;">
     <form class="form-signin" action="nahrung.php" method="post">
         <h2>Nahrung hinzufügen</h2>
         Nahrungsbezeichung<br>
