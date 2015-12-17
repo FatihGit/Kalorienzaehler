@@ -77,7 +77,7 @@ $kohlenhydrate = ($kalorien - ($eiweiss * 4) - ($fett * 9)) / 4;
         $eintragen2 = mysqli_query($connection->myconn, $sql2);
         if ($eintragen == true && $eintragen2 == true)
         {
-            echo "Kalorien für  <b>$ID</b> werden berechnet. <a href=\"anzeige3.php\">Zu den Kalorien</a>";
+            echo header("Location: anzeige3.php");
         } 
         else 
             {

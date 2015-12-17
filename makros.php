@@ -84,7 +84,7 @@ if ($menge == 0) {
         $eintragen = mysqli_query($connection->myconn, $sql);
         $eintragen2 = mysqli_query($connection->myconn, $sql2);
         if ($eintragen == true && $eintragen2 == true) {
-            echo "Kalorien für  <b>$ID</b> werden berechnet. <a href=\"anzeige3.php\">Zu den Kalorien</a>";
+            header('Location: anzeige3.php');
         } else {
             echo "Fehler beim Speichern.";
         }
