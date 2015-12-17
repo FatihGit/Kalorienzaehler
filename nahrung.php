@@ -111,7 +111,7 @@ include "navigation.php";
                    }
                    ?>><br><br>
             Kalorien<br>
-            <?php echo $kalorien; ?>
+            <?php echo $kalorien; ?><br><br>
             Eiweiß<br>
             <input type="number" size="24" maxlength="50"
                    name="eiweiss" step="any" value=
